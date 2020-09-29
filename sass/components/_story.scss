@@ -1,0 +1,99 @@
+.story
+{
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: $main-shadow;
+    background-color: rgba($colorwhite, .5);
+    border-radius: .3rem;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $font-size;
+    transform: skewX(-12deg);
+    position: relative;
+
+    @include respond(tab-port){
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;   
+    }
+
+    @include respond(phone){
+        transform: skewX(0);
+    }
+
+    &__shape
+    {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        transform: translateX(-3rem) skewX(12deg);
+        overflow: hidden;
+        border-radius: 50%;
+        
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            -wbkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);//circle(radio at posicion en x e y)
+            /* para que el shape-outside ande todo tiene que tener sus medidas
+            y debe ser flotante*/
+        }
+
+
+
+        @include respond(phone){
+            transform:translateX(-3rem) skewX(0);
+        }
+
+    }
+
+    &__img
+    {
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+        backface-visibility: hidden;
+        
+        
+    }
+
+    &__text
+    {
+        transform: skewX(12deg);
+        
+        @include respond(phone){
+            transform: skewX(0);
+        }
+    }
+
+    &__caption
+    {
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%, 20%);
+        color: $colorwhite;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;//quita el temblor de la animación
+
+    }
+
+    &:hover &__caption
+    {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        backface-visibility: hidden;
+        
+    }
+
+    &:hover &__img
+    {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(.3rem) brightness(80%);
+        backface-visibility: hidden;
+    }
+}

@@ -1,0 +1,268 @@
+.card
+{
+    //  FUNCTIONALITY
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    -webkit-perspective: 150rem;
+    position: relative;
+    height: 45rem;
+
+
+    
+    
+    &__side
+    {
+        
+        height: 45rem;
+        width: 100%;
+        transition: all 1.3s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden; // hidde the back side of an element
+        border-radius: .3rem;
+        overflow: hidden;
+        box-shadow:  0 2rem 4rem rgba($colorblack, .35);
+
+        
+
+        &--front
+        {
+            background-color: $colorwhite;
+        }
+
+        &--back
+        {
+            transform: rotateY(-180deg);
+            background-color: rgb(104, 121, 104);
+
+            &-1
+            {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+            
+            &-2
+            {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+            
+            &-3
+            {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+
+    &:hover &__side--front
+    {
+        transform: rotateY(180deg);
+    }
+
+    &:hover &__side--back
+    {
+        transform: rotateY(0deg);
+    }
+
+
+    //  FRONT SIDE STYLING
+    &__picture
+    {
+        background-size: cover;
+        height: 20rem;
+        background-blend-mode: screen; //blend modes
+        border-radius: .3rem;
+
+
+        &--1
+        {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
+                                url(../img/nat-5.jpg);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            
+        }
+        
+        
+        &--2
+        {
+            background-image:linear-gradient(to right bottom, $color-primary-light, 
+            $color-primary-dark)
+            ,url(../img/nat-6.jpg);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        &--3
+        {
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark),
+            url(../img/nat-7.jpg);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+    }
+
+    &__heading
+    {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $colorwhite;
+        position:absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 70%;
+    }
+
+    &__heading-span
+    {
+        padding: 1rem 1rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone; //rompe el texto en partes
+        &--1
+        {
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-secondary-light, .85),
+            rgba($color-secondary-dark, .85));
+
+        }
+
+        &--2
+        {
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-primary-light, .85),
+            rgba($color-primary-dark, .85));
+
+        }
+
+        &--3
+        {
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-tertiary-light, .85),
+            rgba($color-tertiary-dark, .85));
+
+        }
+    }
+
+    &__details
+    {
+        ul
+        {
+            list-style: none;
+            width: 80%;
+            margin: 2rem auto 2rem auto;
+            
+
+            li
+            {
+                text-align: center;
+                font-size: 1.3rem;
+                padding: 1rem;
+
+                &:not(:last-child)
+                {
+                    border-bottom: .2rem solid rgba($color-gray-dark, .23);
+                }
+            }
+        }
+    }
+
+    //  BACK SIDE STYLING
+    &__cta
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        text-align: center;
+    }
+
+    &__price-box
+    {
+        text-align: center;
+        color:$colorwhite;
+
+        
+    }
+    
+    &__price-only
+    {
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value
+    {
+        font-size: 8rem;
+        font-weight: 100;
+        margin-bottom: 8rem;
+    }
+
+    
+    
+    
+   // @include respond(tab-port){
+    @media only screen and (max-width: 56.25em),
+           only screen and (hover:none)         {
+        width: 80%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+        height: auto;
+        border-radius: .3rem;
+        background-color: $colorwhite;
+        box-shadow:  0 2rem 4rem rgba($colorblack, .35);
+   
+        &__side
+        {
+            
+            height: auto;
+            position: relative;
+            box-shadow: none;
+            
+
+            &--back
+            {
+                transform: rotateY(0);  
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);    
+            }
+        }
+    
+        &:hover &__side--front
+        {
+            transform: rotateY(0);
+        }
+
+       
+        //  BACK SIDE STYLING
+        &__cta
+        {
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: translate(0);
+            width: 100%;
+            padding: 5rem 2rem 3rem 2rem;
+            
+        }
+    
+        &__price-box
+        {
+            text-align: center;
+            color:$colorwhite;
+
+        }
+
+    
+        &__price-value
+        {
+            
+            margin-bottom: 3rem;
+        }
+    
+    }
+    
+}

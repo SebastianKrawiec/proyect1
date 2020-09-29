@@ -1,0 +1,51 @@
+/*
+ es un hack para que a la caja le
+ devuelva su alto cuando estan en float
+*/
+@mixin clearfix 
+{
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+// MEDIA QUERY MANAGER
+/*
+0 - 37.5em (600px) phone
+600 - 56,25em (900px) tab-port
+900 - 75em (1200px) tab-land
+1200 - 1800px desktop
+112,5em (1800px+) big desktop
+los media querys se trabajan en "em". por ende todo lo que son pixeles hay
+que pasarlo a "em". 1 em = 16px
+
+ORDER---> base + typography , general layout + grid, page layout, components
+
+$BRAKPOINT argument choices:
+- phone
+- tab-port
+- tab-land
+- desktop
+*/
+
+@mixin respond($Breakpoint){
+    
+    @if $Breakpoint == phone{
+        @media only screen and (max-width: 37.5em) { @content };
+    } 
+
+    @if $Breakpoint == tab-port{
+        @media only screen and (max-width: 56.25em) { @content };
+    }
+
+    @if $Breakpoint == tab-land{
+        @media only screen and (max-width: 75em) { @content };
+    }
+
+    @if $Breakpoint == big-desktop{
+        @media only screen and (min-width: 112.5em) { @content };
+    }    
+}
+//si el breakpoint dice phone pasa lo que dice el mixin

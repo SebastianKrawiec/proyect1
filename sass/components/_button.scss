@@ -1,0 +1,105 @@
+.btn
+{   
+    &,
+    &:link,
+    &:visited
+    {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        font-size: 1.3rem;
+        transition: all .2s;
+        position: relative; 
+
+        //changes for the <button> element
+        border: none;
+        cursor: pointer;
+        
+    }
+
+    &:hover
+    {
+        transform: translateY(-.3rem);
+        box-shadow: $main-shadow;
+    }
+
+    &:active,
+    &:focus
+    {
+        outline: none;
+        transform: translateY(-.1rem);
+        box-shadow: $btn-active-shadow;
+    }
+
+    &::after
+    {
+        content: "";
+        /*se agrega contenido vacio
+        para crear una forma 
+        */
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+        /*las animaciones se agregan en el estado
+        inicial
+        */  
+    }
+
+    &--white{
+        background-color: $colorwhite;
+        color: $color-gray-dark;
+    }
+
+    &--green
+    {
+        background-color: $color-primary;
+        color: $colorwhite;
+    }
+}
+
+.btn-animated
+{
+    animation: moveInBottom 2s ease-out .75s;
+    animation-fill-mode: backwards;
+    /*aplica los estados de la animación antes
+    de que cargue el objeto
+    */
+}
+
+.btn-text
+{
+    &:link,
+    &:visited
+    {
+        font-size: $font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: .1rem solid $color-primary;
+        padding: .3rem;
+        transition: all .3s;
+
+    }
+
+    &:hover
+    {
+        background-color: $color-primary;
+        color: $colorwhite;
+        box-shadow: $main-shadow;
+        transform: translateY(-2);
+    }
+
+    &:active
+    {
+        box-shadow: $btn-active-shadow;
+        transform: translateY(0);
+    }
+}
